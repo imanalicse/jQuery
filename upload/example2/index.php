@@ -9,8 +9,15 @@
 <body>
 <div class="row upload-option">
     <form action="">
-        <div class="upload-container" data-field-name="logo">
-            <h4>Ajax Upload</h4>
+        <div class="upload-container" data-field-name="logo" style="float: left">
+            <h4>Ajax Upload 1</h4>
+            <div class="file-upload">
+                <input type="file" class="uploadField"/>
+            </div>
+            <div class="preview"></div>
+        </div>
+        <div class="upload-container" data-field-name="banner" style="float: left">
+            <h4>Ajax Upload 2</h4>
             <div class="file-upload">
                 <input type="file" class="uploadField"/>
             </div>

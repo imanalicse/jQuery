@@ -1,7 +1,13 @@
 <?php
 
 $sourcePath = $_FILES['userImage']['tmp_name'];
-$targetPath = "images/".$_FILES['userImage']['name'];
+
+$upload_dir = 'images';
+if (! is_dir($upload_dir)) {
+    mkdir( $upload_dir, 0700 );
+}
+
+$targetPath = $upload_dir . "/".$_FILES['userImage']['name'];
 
 $response = array();
 $uploaded = move_uploaded_file($sourcePath, $targetPath);

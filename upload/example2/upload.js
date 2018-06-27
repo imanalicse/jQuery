@@ -1,12 +1,12 @@
 $(document).ready(function (e) {
     
-    $('.uploadField').on('change', function(e) {
-        uploader(e);
+    $('.uploadField').on('change', function(ev) {
+        uploader(this, ev);
     });
 
-    function uploader(event) {
+    function uploader(self, event) {
         var file = event.target.files;
-        var uploadContainer = $("." + event.target.className).parents(".upload-container");
+        var uploadContainer = $(self).parents(".upload-container");
         var data = new FormData();
         // data.append("action", "webalive_logo_upload");
         $.each(file, function(key, value) {
