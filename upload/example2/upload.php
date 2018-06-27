@@ -1,4 +1,5 @@
 <?php
+
 $sourcePath = $_FILES['userImage']['tmp_name'];
 $targetPath = "images/".$_FILES['userImage']['name'];
 
@@ -8,6 +9,7 @@ if($uploaded) {
     $response['status'] = "success";
     $response['url'] = $targetPath;
     $response['name'] = basename($targetPath);
+    $response['type'] = $_FILES['userImage']['type'];
 }else {
     $response['status'] = "error";
 }

@@ -1,12 +1,12 @@
 $(document).ready(function (e) {
     
-    $('#webalive_logo_input').on('change', function(e) {
-        websiteLogoUpload(e);
+    $('.uploadField').on('change', function(e) {
+        uploader(e);
     });
 
-    function websiteLogoUpload(event) {
+    function uploader(event) {
         var file = event.target.files;
-        var parent = $("#" + event.target.id).parent();
+        var uploadContainer = $("." + event.target.className).parents(".upload-container");
         var data = new FormData();
         // data.append("action", "webalive_logo_upload");
         $.each(file, function(key, value) {
@@ -23,7 +23,7 @@ $(document).ready(function (e) {
             contentType: false, // Set content type to false as jQuery will tell the server its a query string request
             success: function(data, textStatus, jqXHR) {
                 if(data.status == 'success') {
-                    var appender = $("#append-logo-files");
+                    var appender = uploadContainer.find(".preview");
                     var img = '<p><img src="' + data.url+ '" height="100"><p>';
                     appender.append(img);
                 }

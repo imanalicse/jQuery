@@ -8,12 +8,14 @@
 </head>
 <body>
 <div class="row upload-option">
-    <div class="col-md-4">
-        <h4>Ajax Upload</h4>
-        <div id="webalive_logo_upload" class="file-upload">
-            <input type="file" id="webalive_logo_input"/>
+    <form action="">
+        <div class="upload-container" data-field-name="logo">
+            <h4>Ajax Upload</h4>
+            <div class="file-upload">
+                <input type="file" class="uploadField"/>
+            </div>
+            <div class="preview"></div>
         </div>
-        <div id="append-logo-files"></div>
-    </div>
+    </form>
 </body>
 </html>
