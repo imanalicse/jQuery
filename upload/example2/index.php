@@ -12,7 +12,7 @@
         <div class="upload-container" data-field-name="logo" style="float: left">
             <h4>Ajax Upload 1</h4>
             <div class="file-upload">
-                <input type="file" class="uploadField"/>
+                <input type="file" class="uploadField" multiple/>
             </div>
             <div class="preview"></div>
         </div>

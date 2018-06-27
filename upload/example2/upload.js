@@ -10,7 +10,7 @@ $(document).ready(function (e) {
         var data = new FormData();
         // data.append("action", "webalive_logo_upload");
         $.each(file, function(key, value) {
-            data.append("userImage", value);
+            data.append(key, value);
         });
 
         $.ajax({
