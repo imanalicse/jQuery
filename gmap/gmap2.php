@@ -8,31 +8,29 @@
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
-//    var geocoder = new google.maps.Geocoder();
-//    var address = "new york";
-//    var addresses = [];
-//    addresses.push('new york');
-//    addresses.push('WebAlive, 910 Yarra Street, South Yarra VIC, Australia');
-//    geocoder.geocode( { 'address': address}, function(results, status) {
-//        if (status == google.maps.GeocoderStatus.OK) {
-//            var latitude = results[0].geometry.location.lat();
-//            var longitude = results[0].geometry.location.lng();
-//        }
-//    });
+    //    var geocoder = new google.maps.Geocoder();
+    //    var address = "new york";
+    //    var addresses = [];
+    //    addresses.push('new york');
+    //    addresses.push('WebAlive, 910 Yarra Street, South Yarra VIC, Australia');
+    //    geocoder.geocode( { 'address': address}, function(results, status) {
+    //        if (status == google.maps.GeocoderStatus.OK) {
+    //            var latitude = results[0].geometry.location.lat();
+    //            var longitude = results[0].geometry.location.lng();
+    //        }
+    //    });
 </script>
 
 <?php
 
-function getLatituteLongituteByAddress($addresss) {
+function getLatituteLongituteByAddress($addresss)
+{
     $address = urlencode($addresss);
-    $jsonurl = "http://maps.google.com/maps/api/geocode/json?address=".$address;
+    $jsonurl = "http://maps.google.com/maps/api/geocode/json?address=" . $address;
     $json = file_get_contents($jsonurl);
     $response = json_decode($json, true);
-    if(!empty($response)) {
-        if($response['status'] == 'OK') {
-//            echo '<pre>';
-//            echo print_r($response['results']);
-//            echo '</pre>';
+    if (!empty($response)) {
+        if ($response['status'] == 'OK') {
             return $response['results'][0]['geometry']['location'];
         }
     }
@@ -41,16 +39,16 @@ function getLatituteLongituteByAddress($addresss) {
 
 $address = 'WebAlive, 910 Yarra Street, South Yarra VIC, Australia';
 $lat_lng = getLatituteLongituteByAddress($address);
-
-echo '<pre>';
-echo print_r($lat_lng);
-echo '</pre>';
-
+//echo '<pre>';
+//echo print_r($lat_lng);
+//echo '</pre>';
 ?>
 
 <script>
     function initMap() {
 
+
+        //-37.838260, 144.993674
 //        var geocoder = new google.maps.Geocoder();
 //        var address = "WebAlive, 910 Yarra Street, South Yarra VIC, Australia";
 //        geocoder.geocode( { 'address': address}, function(results, status) {
@@ -60,31 +58,42 @@ echo '</pre>';
 //            }
 //        });
 
-        var mapProp = {
+
+        var mapSetting = {
             center: new google.maps.LatLng(-37.837544, 144.992918),
-            zoom: 5,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            //scrollwheel: false,
         };
 
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapSetting);
 
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(-37.837544, 144.992918),
-            //animation: google.maps.Animation.BOUNCE,
-            icon: 'images/wa-man.png'
+        var makerData = [
+            {
+                location: {lat: -37.837544, lng: 144.992918},
+                content: 'WebAlive, 910 Yarra Street, <br/> South Yarra VIC, Australia'
+            },
+            {
+                location: {lat: -37.838260, lng: 144.993674},
+                content: 'South Yarra VIC 3141, Australia'
+            }
+        ];
+
+        makerData.forEach(function (element) {
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(element.location.lat, element.location.lng),
+            });
+            marker.setMap(map);
+
+            var infowindow = new google.maps.InfoWindow({
+                content: element.content
+            });
+            google.maps.event.addListener(marker, 'click', function (event) {
+                infowindow.open(map, marker);
+                map.setZoom(16);
+            });
         });
-
-        marker.setMap(map);
-
-
-        var infowindow = new google.maps.InfoWindow({
-            content:"Hello World!"
-        });
-
-        google.maps.event.addListener(marker, 'click', function (event) {
-            infowindow.open(map, marker);
-            //map.setZoom(9);
-        });
-
     }
 </script>
 
