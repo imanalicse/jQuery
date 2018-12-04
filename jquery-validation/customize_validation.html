@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery validation plug-in - main demo</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script>
+
+		$().ready(function() {
+
+			$("#commentForm").validate({
+				rules: {
+					firstname: "required",
+					lastname: "required",
+					username: {
+						required: true,
+						minlength: 2
+					},
+					password: {
+						required: true,
+						minlength: 5
+					},
+					confirm_password: {
+						required: true,
+						minlength: 5,
+						equalTo: "#password"
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					topic: {
+						required: "#newsletter:checked",
+						minlength: 2
+					},
+					agree: "required"
+				},
+				messages: {
+					firstname: "Please enter your name",
+					username: {
+						required: "Please enter a username",
+						minlength: "Your username must consist of at least 2 characters"
+					},
+					password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long"
+					},
+					confirm_password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long",
+						equalTo: "Please enter the same password as above"
+					},
+					email: "Please enter a valid email address",
+					agree: "Please accept our policy",
+					topic: "Please select at least 2 topics"
+				},
+				errorPlacement: function (error, element) {
+					if (element.attr('name') == 'payment_method') {
+						error.appendTo(jQuery('.payment_error_placement'));
+					} else {
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function(form) {
+					alert("submitted!");
+				}
+			});
+		});
+	</script>
+	<style>
+		#commentForm {
+			width: 500px;
+		}
+		#commentForm label {
+			width: 250px;
+		}
+		#commentForm label.error, #commentForm input.submit {
+			margin-left: 253px;
+		}
+	</style>
+</head>
+<body>
+<div id="main">
+	<form class="cmxform" id="commentForm" method="get" action="">
+		<fieldset>
+			<legend>Please provide your name, email address (won't be published) and a comment</legend>
+			<p>
+				<label for="cname">Name (required, at least 2 characters)</label>
+				<input id="cname" name="name" minlength="2" type="text" required>
+			</p>
+			<p>
+				<label for="cemail">E-Mail (required)</label>
+				<input id="cemail" type="email" name="email" required>
+			</p>
+			<p>
+				<label for="curl">URL (optional)</label>
+				<input id="curl" type="url" name="url">
+			</p>
+			<p>
+				<label for="ccomment">Your comment (required)</label>
+				<textarea id="ccomment" name="comment" required></textarea>
+			</p>
+			<p>
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password">
+			</p>
+			<p>
+				<label for="confirm_password">Confirm password</label>
+				<input id="confirm_password" name="confirm_password" type="password">
+			</p>
+
+			<p>
+				<label>Payment</label>
+				<input name="payment_method" type="radio" value="COD" required> COD
+				<input name="payment_method" type="radio" value="COD" required> Secure Pay
+				<div class="payment_error_placement"></div>
+			</p>
+
+			<p>
+				<input class="submit" type="submit" value="Submit">
+			</p>
+		</fieldset>
+	</form>
+
+</div>
+</body>
+</html>
