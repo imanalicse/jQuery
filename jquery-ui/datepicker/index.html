@@ -20,15 +20,14 @@
 
             // First convert the date in to the mm-dd-yyyy format
             // Take note that we will increment the month count by 1
-            var currentdate = (m + 1) + '-' + d + '-' + y ;
-
+            var currentdate = (m + 1) + '-' + d + '-' + y;
 
 
             // We will now check if the date belongs to disableddates array
             for (var i = 0; i < disableddates.length; i++) {
 
                 // Now check if the current date is in disabled dates array.
-                if ($.inArray(currentdate, disableddates) != -1 ) {
+                if ($.inArray(currentdate, disableddates) != -1) {
                     return [false];
                 }
             }
@@ -40,15 +39,23 @@
 
         }
 
-        $( function() {
-            $( "#datepicker" ).datepicker({
+        $(function () {
+            $("#datepicker").datepicker({
                 dateFormat: 'dd-mm-yy',
                 minDate: 0,
                 //defaultDate: +1,
                 changeYear: true,
-                beforeShowDay: DisableSpecificDates
+                //beforeShowDay: DisableSpecificDates,
+                beforeShowDay: function (date) {
+                    var day = date.getDay();
+                    console.log(day);
+                    if (day == 6 || day ==0) {
+                        return [false];
+                    }
+                    return [true];
+                }
             });
-        } );
+        });
     </script>
 </head>
 <body>
