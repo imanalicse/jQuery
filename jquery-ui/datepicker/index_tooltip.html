@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Accordion - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- http://www.jquerybyexample.net/2012/05/how-to-display-tooltip-on-jquery-ui.html -->
+    <style>
+        
+    .Highlighted a{
+        background-color : Green !important;
+        background-image :none !important;
+        color: White !important;
+        font-weight:bold !important;
+        font-size: 12pt;
+    }
+
+    </style>
+    <script>
+
+        $(function () {
+
+            var SelectedDates = {};
+            SelectedDates[new Date('01/01/2019')] = new Date('01/01/2019');
+            SelectedDates[new Date('01/05/2019')] = new Date('01/05/2019');
+            SelectedDates[new Date('06/06/2012')] = new Date('06/06/2012');
+
+            // mm/dd/Y
+            var SeletedText = {};
+            SeletedText[new Date('01/01/2019')] = 'Holiday1';
+            SeletedText[new Date('01/05/2019')] = 'Holiday2';
+            SeletedText[new Date('06/06/2019')] = 'Holiday3'; 
+
+            $("#datepicker").datepicker({
+                dateFormat: 'dd-mm-yy',
+                beforeShowDay: function (date) {
+
+                    var Highlight = SelectedDates[date];
+                var HighlighText = SeletedText[date];
+                if (Highlight) {
+                    return [true, "Highlighted", HighlighText];
+                }
+
+                // else {
+
+                //     return [true, '', ''];
+
+                // }
+
+                return [true, '', ''];
+
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+</body>
+</html>
