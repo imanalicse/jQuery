@@ -27,18 +27,22 @@
             SelectedDates[new Date('01/01/2019')] = new Date('01/01/2019');
             SelectedDates[new Date('01/05/2019')] = new Date('01/05/2019');
             SelectedDates[new Date('06/06/2012')] = new Date('06/06/2012');
+            console.log('SelectedDates');
+            console.log(SelectedDates);
 
             // mm/dd/Y
             var SeletedText = {};
             SeletedText[new Date('01/01/2019')] = 'Holiday1';
             SeletedText[new Date('01/05/2019')] = 'Holiday2';
             SeletedText[new Date('06/06/2019')] = 'Holiday3'; 
+            console.log('SeletedText');
+            console.log(SeletedText);
 
             $("#datepicker").datepicker({
                 dateFormat: 'dd-mm-yy',
                 beforeShowDay: function (date) {
-
-                    var Highlight = SelectedDates[date];
+                console.log(date);
+                var Highlight = SelectedDates[date];
                 var HighlighText = SeletedText[date];
                 if (Highlight) {
                     return [true, "Highlighted ui-datepicker-unselectable", HighlighText];
