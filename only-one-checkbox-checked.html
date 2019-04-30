@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Only one checkbox checked</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.only-one-checkbox-checked input:checkbox').click(function() {
+            $('.only-one-checkbox-checked input:checkbox').not(this).prop('checked', false);
+        });
+    });
+    </script>
+</head>
+<body class="body">
+    <div class="only-one-checkbox-checked">
+        <input type="checkbox" name="skill" value="male"> Male
+        <input type="checkbox" name="skill" value="female"> Female
+        <input type="checkbox" name="skill" value="other"> Other
+    </div>
+</body>
+</html>
