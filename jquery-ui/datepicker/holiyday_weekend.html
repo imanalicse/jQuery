@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+
+    .holiday a{
+        background-color : Green !important;
+        background-image :none !important;
+        color: White !important;
+        font-weight:bold !important;
+        font-size: 12pt;
+    }
+
+    </style>
+    <script>
+
+        jQuery(document).ready(function($){
+
+            var public_holiday = [];
+
+            var holiday1 = [];
+            holiday1['holiday_name'] = 'Independent Day';
+            holiday1['holiday'] = '16-04-2019';
+            public_holiday.push(holiday1);
+
+            var holiday2 = [];
+            holiday2['holiday_name'] = 'Eid';
+            holiday2['holiday'] = '25-04-2019';
+            public_holiday.push(holiday2);
+
+
+
+            console.log(public_holiday);
+
+            function checkedNationalDays(date) {
+                var sdate = $.datepicker.formatDate( 'dd-mm-yy', date);
+                for (i = 0; i < public_holiday.length; i++) {
+                    var holiday = public_holiday[i];
+                    if(holiday['holiday'] == sdate){
+                        return [false, 'holiday', holiday['holiday_name']];
+                    }
+                }
+                return [true, '', ''];
+            }
+
+            function noWeekendsOrHolidays(date) {
+                var noWeekend = jQuery.datepicker.noWeekends(date);
+                return noWeekend[0] ? checkedNationalDays(date) : noWeekend;
+            }
+
+            $("#datepicker").datepicker({
+                dateFormat: 'dd-mm-yy',
+                beforeShowDay: noWeekendsOrHolidays
+            });
+        });
+    </script>
+</head>
+<body>
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+</body>
+</html>
