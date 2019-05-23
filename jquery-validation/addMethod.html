@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Add Method</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script>
+
+		$().ready(function() {
+
+			$.validator.addMethod("ticket", function(value, element, regexpr) {
+				return regexpr.test(value);
+			}, "Ticket number should be - One digit, forward slash, up to 6 digits (0/000000).");
+
+			$("form").validate({
+				rules:{
+					reader_ticket_no:{
+						required: true,
+						ticket: /[0-9]{1}\/[0-9]{6}$/,
+					}
+				},
+				submitHandler: function(form) {
+					var $form = $(form);
+					var formData = $form.serializeArray();
+					console.log(formData);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="main">
+	<form>
+
+		<div class="form-group">
+				<label for="reader_ticket_no">Reader's Ticket No*</label>
+				<input type="text" name="reader_ticket_no" value="" class="form-control" id="reader_ticket_no" placeholder="">
+			</div>
+			<p>
+				<input class="submit btn btn-submit" type="submit" value="Submit">
+			</p>
+	</form>
+
+</div>
+</body>
+</html>

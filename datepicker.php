@@ -1,1 +1,0 @@
-http://keith-wood.name/datepick.html
