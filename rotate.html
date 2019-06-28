@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        #container {
+            width: 820px;
+            height: 100px;
+            overflow: hidden;
+        }
+        #container.rotate90,
+        #container.rotate270 {
+            width: 100px;
+            height: 820px
+        }
+        #image {
+            transform-origin: top left;
+            /* IE 10+, Firefox, etc. */
+            -webkit-transform-origin: top left;
+            /* Chrome */
+            -ms-transform-origin: top left;
+            /* IE 9 */
+        }
+        #container.rotate90 #image {
+            transform: rotate(90deg) translateY(-100%);
+            -webkit-transform: rotate(90deg) translateY(-100%);
+            -ms-transform: rotate(90deg) translateY(-100%);
+        }
+        #container.rotate180 #image {
+            transform: rotate(180deg) translate(-100%, -100%);
+            -webkit-transform: rotate(180deg) translate(-100%, -100%);
+            -ms-transform: rotate(180deg) translateX(-100%, -100%);
+        }
+        #container.rotate270 #image {
+            transform: rotate(270deg) translateX(-100%);
+            -webkit-transform: rotate(270deg) translateX(-100%);
+            -ms-transform: rotate(270deg) translateX(-100%);
+        }
+    </style>
+</head>
+<body class="body">
+
+<button id="button">Click me!</button>
+<div id="container">
+    <img src="http://i.stack.imgur.com/zbLrE.png" id="image" />
+</div>
+
+<script>
+    var angle = 0,
+     img = document.getElementById('container');
+    document.getElementById('button').onclick = function() {
+        angle = (angle + 90) % 360;
+        img.className = "rotate" + angle;
+        console.log(angle);
+    }
+
+</script>
+</body>
+</html>
