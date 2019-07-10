@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debounce</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body class="body">
+<button onclick="clickMe()">Click</button>
+<input type="text" class="my-input" value="1">
+<script>
+    function debounce(fn, delay) {
+        let timerId = null;
+        return function () {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+            if (timerId == null) {
+                fn();
+            }
+            timerId = setTimeout(function() {
+                timerId = null;
+            }, delay);
+        }
+    }
+    
+    function myFunction() {
+        var value = parseInt($(".my-input").val());
+            value = value + 1;
+            $(".my-input").val(value);
+    }
+
+    var myFunctionDebounce = debounce(myFunction, 1000);
+
+    function clickMe() {
+        myFunctionDebounce();
+    }
+</script>
+</body>
+</html>

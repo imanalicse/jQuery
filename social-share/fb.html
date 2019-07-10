@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body class="body">
+<div id="mImageBox">
+    <img id='my_image' src='http://www.bitmascot.com/wp-content/uploads/2016/07/outsourcing.jpg' alt='jkjkjkfdsafjask' width="100px" height="auto" onclick="fbs_click(this)"/>
+</div>
+<a onclick="shareit()">Share on facebook</a>
+
+<script>
+
+    function fbs_click(TheImg) {
+        facebookShare('http://www.bitmascot.com/?a=323', 'Hello');
+    }
+
+    function facebookShare(url, title) {
+        if(title == undefined || title == null){
+            title = '';
+        }
+        //window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436');
+        window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(url)+'&picture=http://www.bitmascot.com/wp-content/uploads/2016/07/outsourcing.jpg&description=Description here','sharer','toolbar=0,status=0,width=626,height=436');
+        return false;
+    }
+
+
+    function shareit(){
+        var url="http://www.bitmascot.com/"; //Set desired URL here
+        var img="http://www.bitmascot.com/wp-content/uploads/2016/07/outsourcing.jpg"; //Set Desired Image here
+        var totalurl=encodeURIComponent(url+'?img='+img);
+
+        window.open ('http://www.facebook.com/sharer.php?u='+totalurl,'','width=500, height=500, scrollbars=yes, resizable=no');
+
+    }
+
+</script>
+</body>
+</html>

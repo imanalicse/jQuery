@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body class="body">
+<script>
+
+    $("body").on('click', ".js-twitter-share", function(e){
+        e.preventDefault();
+        twitterShare();
+    });
+
+    twitterShare();
+
+    function twitterShare(){
+
+        //var url = 'https://nsw-records.webmascot.com.au';
+        var url = 'https://records-primo-sb.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=ADLIB_RNSW110005124&context=L&vid=61SRA&lang=en_US&search_scope=Everything&adaptor=Local%20Search%20Engine&tab=default_tab&query=any,contains,school&sortby=rank';
+        var url = encodeURI('https://records-primo-sb.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=ADLIB_RNSW110005124&context=L&vid=61SRA&lang=en_US&search_scope=Everything&adaptor=Local Search Engine&tab=default_tab&query=any,contains,school&sortby=rank');
+
+        var title = "NRS-4882 | Photographs of the School Travelling Hospital, the School Medical Staff and the Dental Clinic";
+        console.log(title);
+        title = title.replace(/\|/g, ', ');
+        console.log(title);
+
+        //console.log(url);
+
+        var query_param = '?url='+encodeURIComponent(url)+'&text='+title+'&hashtags=hello';
+        var share_link = 'https://twitter.com/share'+query_param;
+        console.log(query_param);
+        console.log(share_link);
+
+        window.open(share_link, 'sharer','toolbar=0,status=0,width=626,height=436');
+        return false;
+    }
+
+</script>
+</body>
+</html>

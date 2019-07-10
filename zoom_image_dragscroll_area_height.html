@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!--<script type="text/javascript" src="dragscroll-master/dragscroll.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<script type="text/javascript">
+    var imgHeight = 480;
+    var imgWidth = 480;
+    var clickCount = 4;
+    var resize = 150;
+    $( document ).ready(function() {
+
+var maxHeight = "3000px";
+var maxWidth = "3000px";
+var imgg = document.getElementById("imgg");
+
+        $("#in").click(function(){
+            imageZoomIn(imgg);
+            $("#Container img").css("max-width", maxWidth);
+            $("#Container img").css("max-height", maxHeight);
+        });
+        $("#out").click(function(){
+            imageZoomOut(imgg);
+        });
+
+    });
+
+    function imageZoomIn (img)
+    {
+        if (img.height < (imgHeight*clickCount) && img.width <(imgWidth*clickCount)  ){
+
+
+        var origH  =  img.height;  // original image height
+        var origW  =  img.width; // original image width
+        var mouseX = event.x;
+        var mouseY = event.y;
+        var newH   = origH * (resize / 100) + "px";
+        var newW   = origW * (resize / 100) + "px";
+
+        // Set the new width and height
+        img.style.height = newH;
+        img.style.width  = newW;
+
+        var c = img.parentNode;
+
+        // Work out the new center
+        c.scrollLeft = (mouseX * (resize / 100)) - (newW / 2) / 2;
+        c.scrollTop  = (mouseY * (resize / 100)) - (newH / 2) / 2;
+        }
+        else
+        {
+            alert('Maximum zoom in exceed');
+        }
+    }
+
+    function imageZoomOut (img)
+    {
+
+        if (img.height > imgHeight && img.width >imgWidth  ) {
+
+             // resize amount in percentage
+            var origH  =  img.height;  // original image height
+            var origW  =  img.width; // original image width
+            var mouseX = event.x;
+            var mouseY = event.y;
+            var newH   = origH / (resize / 100) + "px";
+            var newW   = origW / (resize / 100) + "px";
+
+
+        // Set the new width and height
+        img.style.height = newH;
+        img.style.width  = newW;
+
+        var c = img.parentNode;
+
+        // Work out the new center
+        c.scrollLeft = (mouseX * (resize / 100)) + (newW / 2) / 2;
+        c.scrollTop  = (mouseY * (resize / 100)) + (newH / 2) / 2;
+
+        }
+        else {
+            alert('Minimum zoom out exceed');
+        }
+    }
+
+</script>
+<style type="text/css">
+    #container {
+        position:relative;
+        width:500px;
+        height:500px;
+        /*overflow: hidden;*/
+        overflow: scroll;
+        cursor: grab;
+    }
+
+    #Container img {
+        max-width: 500px;
+        max-height: 500px;
+    }
+</style>
+</head>
+<body>
+
+<p>
+    <span class="glyphicon glyphicon-zoom-in" id="in">
+    </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <span class="glyphicon glyphicon-zoom-out" id="out"></span>
+</p>
+
+<div class="dragscroll"  id="container">
+    <img alt="Click to zoom" id="imgg" src="http://www.bitmascot.com/wp-content/uploads/2016/07/banner-1.jpg" />
+</div>
+
+</body>
+</html>

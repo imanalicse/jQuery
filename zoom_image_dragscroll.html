@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!--<script type="text/javascript" src="dragscroll-master/dragscroll.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.js"></script>
+    <!-- jQuery library -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-1.9.1.min.js"
+            integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+            crossorigin="anonymous"></script>
+    <title>Zoom</title>
+
+<script type="text/javascript">
+
+    var resize = 150;
+    var zoomCounterLimit = 4;
+    var zoomCounter = 0;
+
+    function imageZoomIn (img)
+    {
+        if(zoomCounter < zoomCounterLimit ){
+            zoomCounter++;
+            console.log('imageZoomIn zoomCounter ', zoomCounter);
+            //$(".gallery-grid-appender").css('overflow', 'auto');
+
+            var origH  =  img.height();  // original image height
+            var origW  =  img.width(); // original image width
+            var mouseX = event.x;
+            var mouseY = event.y;
+            var newH   = origH * (resize / 100) + "px";
+            var newW   = origW * (resize / 100) + "px";
+
+            // Set the new width and height
+            // img.style.height = newH;
+            // img.style.width  = newW;
+            img.height(newH);
+            img.width(newW);
+
+            var c = img.parent();
+
+            // Work out the new center
+            c.scrollLeft = (mouseX * (resize / 100)) - (newW / 2) / 2;
+            c.scrollTop  = (mouseY * (resize / 100)) - (newH / 2) / 2;
+        }
+        else
+        {
+            console.log('Maximum zoom in exceed');
+        }
+    }
+
+    function imageZoomOut (img)
+    {
+        if(zoomCounter > 0 ){
+            zoomCounter--;
+            console.log('imageZoomOut zoomCounter ', zoomCounter);
+            // resize amount in percentage
+            var origH  =  img.height();  // original image height
+            var origW  =  img.width(); // original image width
+            var mouseX = event.x;
+            var mouseY = event.y;
+            var newH   = origH / (resize / 100) + "px";
+            var newW   = origW / (resize / 100) + "px";
+
+
+            // Set the new width and height
+            // img.style.height = newH;
+            // img.style.width  = newW;
+            img.height(newH);
+            img.width(newW);
+
+            //var c = img.parentNode;
+            var c = img.parent();
+
+            // Work out the new center
+            c.scrollLeft = (mouseX * (resize / 100)) + (newW / 2) / 2;
+            c.scrollTop  = (mouseY * (resize / 100)) + (newH / 2) / 2;
+
+        }
+        else {
+            //$(".gallery-grid-appender").css('overflow', 'hidden');
+            console.log('Minimum zoom out exceed');
+        }
+    }
+
+
+    $( document ).ready(function() {
+
+        var img = $("#imgg");
+
+        $("#in").click(function(){
+            imageZoomIn(img);
+
+        });
+        $("#out").click(function(){
+            imageZoomOut(img);
+        });
+
+    });
+
+
+
+
+</script>
+<style type="text/css">
+    #container {
+        position:relative;
+        width:500px;
+        height:500px;
+        /*overflow: hidden;*/
+        overflow: scroll;
+        cursor: grab;
+    }
+</style>
+</head>
+<body>
+
+<p>
+    <span class="glyphicon glyphicon-zoom-in" id="in">
+    </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <span class="glyphicon glyphicon-zoom-out" id="out"></span>
+</p>
+
+<div class="dragscroll"  id="container">
+    <img alt="Click to zoom" id="imgg" src="http://www.bitmascot.com/wp-content/uploads/2016/07/banner-1.jpg" />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NSW Gallery</title>
+    <link rel="stylesheet" href="css/nsw.gallery.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="gallery-grid js-gallery-grid">
+            <img src="img/1.jpg" data-item="1" class="js-slide-item">
+            <img src="img/2.jpg" data-item="2" class="js-slide-item">
+            <img src="img/3.jpg" data-item="3" class="js-slide-item">
+            <img src="img/4.jpg" data-item="4" class="js-slide-item">
+            <img src="img/5.jpg" data-item="5" class="js-slide-item">
+        </div>
+    </div>
+    
+    <div class="container popup-gallery js-popup-gallery hide">
+        <div class="gallery-controls">
+            <a href="#" class="close-gallery js-close-gallery">Close</a> &nbsp; 
+            <span class="gallery-zoomIn js-gallery-zoomIn">ZoomIn</span> &nbsp;
+            <span class="gallery-zoomOut js-gallery-zoomOut">ZoomOut</span> &nbsp;
+            <span class="gallery-rotate js-gallery-rotate">Rotate</span> &nbsp;
+            <span class="gallery-expand js-gallery-expand">Expand</span> &nbsp;
+        </div>
+        
+        <!-- Slider Appender -->
+        <div class="gallery-grid-appender js-gallery-grid-appender"></div>
+
+        <!-- Navigators -->
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+        <!-- Captions -->
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+        
+        <!-- Thumbnails -->
+        <div class="row">
+            <div class="gallery-thumbnails js-gallery-thumbnails"></div>
+        </div>
+    </div>
+    <div class="expand-gallery js-expand-gallery hide">
+        <span id="expand-close" class="js-expand-close">Close</span>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/nsw.gallery.js"></script>
+</body>
+</html>

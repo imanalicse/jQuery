@@ -1,0 +1,207 @@
+body {
+	font-family: Arial;
+	margin: 0;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+img {
+	vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+	position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+	/* display: none;	 */
+	visibility: hidden;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+	cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	width: auto;
+	padding: 16px;
+	margin-top: -50px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+.prev {
+	left: 40px;
+}
+.next {
+	right: 40px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+	background-color: rgba(0, 0, 0, 1);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+	text-align: center;
+	background-color: #222;
+	padding: 2px 16px;
+	color: white;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Six columns side by side */
+.column {
+	float: left;
+	width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+	opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+	opacity: 1;
+}
+
+/* Gallery Style */
+.gallery-grid {
+	width: 80%;
+	height: auto;
+	margin: 200px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.gallery-grid img {
+	cursor: pointer;
+	max-width: 200px;
+}
+.hide {
+	/* display: none; */
+	visibility: hidden;
+}
+.popup-gallery {
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	z-index: 1000;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding: 30px;
+	box-sizing: border-box;
+}
+.gallery-grid-appender {
+	width: 100%;
+	height: 651px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.gallery-grid-appender img {
+	width: 100%;
+	position: absolute;
+	transition: all 1700ms ease-in-out;
+}
+.gallery-thumbnails {
+	margin-top: 65px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.gallery-thumbnails img {
+	max-width: 200px;
+	border:none;
+}
+.gallery-thumbnails img.active {	
+	border: 1px solid red;
+}
+
+/* Captions */
+.caption-container {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	/* bottom: 0px; */
+	left: 0px;
+	background: rgba(0,0,0,0.8);
+	z-index: 100;
+}
+
+/* Controls */
+.gallery-controls {
+	color: #fff;
+}
+.gallery-controls span {
+	cursor: pointer;
+}
+.zoomIn {
+	transform: scale(2.5);
+}
+.zoomOut {
+	transform: scale(1);
+}
+.rotate {
+	transform: rotate(90deg)
+}
+
+/* Expand gallery */
+.expand-gallery {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden;
+	z-index: 1000;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: all 1700ms ease-in-out;
+}
+#expand-close {
+	cursor: pointer;
+	transition: all 1700ms ease-in-out;
+}
