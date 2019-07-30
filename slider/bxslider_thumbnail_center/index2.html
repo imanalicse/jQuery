@@ -1,0 +1,88 @@
+<!-- bxSlider CSS file -->
+<link href="jquery.bxslider.css" rel="stylesheet" />
+<body style="width: 800px; margin: 0 auto">
+	<ul class="bxslider">
+		  <li><img src="images/slide-images/1.jpg" /></li>
+		  <li><img src="images/slide-images/2.jpg" /></li>
+		  <li><img src="images/slide-images/3.jpg" /></li>
+		  <li><img src="images/slide-images/4.jpg" /></li>
+		  <li><img src="images/slide-images/5.jpg" /></li>
+	</ul>
+<div class="pager-wrapper">
+	<div class="custom-pager">
+		<a href="" data-slide-index="0" class="bx-pager-link 1"><img src="images/slide-images/1.jpg"></a>
+		<a href="" data-slide-index="1" class="bx-pager-link 2"><img src="images/slide-images/2.jpg"></a>
+		<a href="" data-slide-index="2" class="bx-pager-link 3"><img src="images/slide-images/3.jpg"></a>
+		<a href="" data-slide-index="3" class="bx-pager-link 4"><img src="images/slide-images/4.jpg"></a>
+		<a href="" data-slide-index="4" class="bx-pager-link 5"><img src="images/slide-images/5.jpg"></a>
+	</div>
+</div>
+</body>
+<style>
+	.pager-wrapper{
+		border: 1px solid black;
+		display: inline-block;
+		overflow: hidden;
+	}
+	.custom-pager{
+		display: inline-block;
+		/*border: 1px solid red;*/
+		position: relative;
+	}
+	.custom-pager img{
+		width: 100px;
+		margin: 0 10px;
+	}
+	.custom-pager .active{
+		/*border: 2px solid red;*/
+	}
+	.custom-pager a{
+		display: inline-block;
+	}
+</style>
+<!-- jQuery library -->
+<script src="jquery-3.1.1.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="jquery.bxslider.js"></script>
+<script>
+	$(document).ready(function(){
+
+		var customerPager = $(".custom-pager");
+
+		var slider = $('.bxslider').bxSlider({
+			mode: 'fade',
+			moveSlides: 1,
+			//slideMargin: 40,
+			startSlide:2,
+			infiniteLoop: true,
+			slideWidth: 660,
+			minSlides: 1,
+			maxSlides: 1,
+			speed: 800,
+			pagerCustom: '.custom-pager',
+		});
+
+
+		customerPager.find(".bx-pager-link").on("click", function () {
+			var _self = $(this);
+			var index = _self.index() + 1;
+			var totalSlide = slider.getSlideCount();
+			var middle = Math.ceil(totalSlide / 2);
+			var difference = middle - index;
+			var travelLength = Math.abs(difference);
+			
+			// for first half
+			if(difference > 0) {
+				for (var i = 0; i < travelLength; i++) {
+					var last = customerPager.find(".bx-pager-link:last");
+					customerPager.prepend(last);
+				}
+			}else if(difference < 0){
+				for (var i = 0; i < travelLength; i++) {
+					var first = customerPager.find(".bx-pager-link:first");
+					customerPager.append(first);
+				}
+			}
+		});
+	});
+</script>
