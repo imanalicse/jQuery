@@ -6,7 +6,7 @@
     <div id="googleMap" style="width:100%;height:400px;"></div>
 </div>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
 <script type="text/javascript">
     //    var geocoder = new google.maps.Geocoder();
     //    var address = "new york";
@@ -38,7 +38,7 @@ function getLatituteLongituteByAddress($addresss)
 }
 
 $address = 'WebAlive, 910 Yarra Street, South Yarra VIC, Australia';
-$lat_lng = getLatituteLongituteByAddress($address);
+//$lat_lng = getLatituteLongituteByAddress($address);
 //echo '<pre>';
 //echo print_r($lat_lng);
 //echo '</pre>';

@@ -4,19 +4,43 @@
     <title>Only one checkbox checked</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery-validation/jquery.validate.js"></script>
+    <link rel="stylesheet" href="jquery-validation/css/screen.css">
     <script>
     $(document).ready(function(){
         $('.only-one-checkbox-checked input:checkbox').click(function() {
             $('.only-one-checkbox-checked input:checkbox').not(this).prop('checked', false);
         });
+
+        $("form").validate({
+            rules: {
+                skill: "required"
+            },
+            messages: {
+                skill: "Please select main condition"
+            },
+            errorPlacement: function (error, element) {
+                console.log(error);
+                if(element.attr('name') == 'skill'){
+                    error.appendTo(jQuery('.payment_error_placement'));
+                }else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
     });
     </script>
 </head>
 <body class="body">
-    <div class="only-one-checkbox-checked">
-        <input type="checkbox" name="skill" value="male"> Male
-        <input type="checkbox" name="skill" value="female"> Female
-        <input type="checkbox" name="skill" value="other"> Other
-    </div>
+    <form method="post">
+        <div class="only-one-checkbox-checked">
+            <input type="checkbox" name="skill" value="male"> Male
+            <input type="checkbox" name="skill" value="female"> Female
+            <input type="checkbox" name="skill" value="other"> Other
+            <div class="payment_error_placement"></div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
