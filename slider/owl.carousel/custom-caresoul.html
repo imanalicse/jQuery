@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>  </title>
+
+    <link rel="stylesheet" href="assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .owl-carousel{
+            width: 300px;
+        }
+        .owl-carousel .item{
+        }
+        .owl-carousel img{
+            width: 300px;
+            height:300px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="owl-carousel owl-theme">
+    <div class="item">
+        <img src="assets/images/1.jpg">
+    </div>
+    <div class="item">
+        <img src="assets/images/2.jpg">
+    </div>
+    <div class="item">
+        <img src="assets/images/3.jpg">
+    </div>
+    <div class="item">
+        <img src="assets/images/4.jpg">
+    </div>
+    <div class="item">
+        <img src="assets/images/5.jpg">
+    </div>
+    <div class="item">
+        <img src="assets/images/6.jpg">
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        var owl = $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                1000:{
+                    items:1
+                }
+            },
+            onInitialize: function (event) {
+              console.log('onInitialize', event);
+            },
+            onChanged: function (event) {
+                //alert('onChanged');
+                console.log(event);
+                debugger;
+            },
+            onChange: function (event) {
+                //alert('onChange');
+                //console.log('onChange', event);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
