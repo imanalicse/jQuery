@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>  </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="jquery.bxslider.css">
+	<script src="jquery.bxslider.js"></script>
+	<style>
+		.slider-wrapper{
+			width: 500px;
+			margin: 0 auto;
+		}
+		.home_slider img{
+			width: 500px;
+			height: 500px;
+		}
+		.custom-pager img{
+			width: 100px;
+			height: 100px;
+		}
+		.custom-pager .active img{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+
+<body>
+<div class="slider-wrapper">
+	<!-- The main images --><ul id="bxslider">
+	<li><img src="http://dummyimage.com/600x400/000/fff.png" alt=""></li>
+	<li><img src="http://dummyimage.com/600x400/000/ff0099.png" alt=""></li>
+	<li><img src="http://dummyimage.com/600x400/000/ff0000.png" alt=""></li>
+	<li><img src="http://dummyimage.com/600x400/000/fff000.png" alt=""></li>
+	<li><img src="http://dummyimage.com/600x400/000/fff.png" alt=""></li>
+	<li><img src="http://dummyimage.com/600x400/000/fff.png" alt=""></li>
+</ul>
+
+	<!-- The thumbnails --><ul id="bxslider-pager">
+	<li data-slideIndex="0"><a href=""><img src="http://dummyimage.com/200x200/000/fff.png"></a></li>
+	<li data-slideIndex="1"><a href=""><img src="http://dummyimage.com/200x200/000/ff0099.png"></a></li>
+	<li data-slideIndex="2"><a href=""><img src="http://dummyimage.com/200x200/000/ff0000.png"></a></li>
+	<li data-slideIndex="3"><a href=""><img src="http://dummyimage.com/200x200/000/fff000.png"></a></li>
+	<li data-slideIndex="4"><a href=""><img src="http://dummyimage.com/200x200/000/fff.png"></a></li>
+	<li data-slideIndex="5"><a href=""><img src="http://dummyimage.com/200x200/000/fff.png"></a></li>
+</ul>
+</div>
+
+</body>
+
+</html>
+
+<script>
+	$(document).ready(function(){
+
+		var realSlider= $("ul#bxslider").bxSlider({
+			speed:1000,
+			pager:false,
+			nextText:'',
+			prevText:'',
+			infiniteLoop:false,
+			hideControlOnEnd:true,
+			onSlideBefore:function($slideElement, oldIndex, newIndex){
+				changeRealThumb(realThumbSlider,newIndex);
+				console.log($slideElement);
+
+			}
+
+		});
+
+		var realThumbSlider=$("ul#bxslider-pager").bxSlider({
+			minSlides: 1,
+			maxSlides: 4,
+			slideWidth: 156,
+			slideMargin: 12,
+			moveSlides: 1,
+			pager:false,
+			speed:1000,
+			infiniteLoop:false,
+			hideControlOnEnd:true,
+			nextText:'<span></span>',
+			prevText:'<span></span>',
+			onSlideBefore:function($slideElement, oldIndex, newIndex){
+				/*$("#sliderThumbReal ul .active").removeClass("active");          $slideElement.addClass("active"); */
+			}
+		});
+
+		linkRealSliders(realSlider,realThumbSlider);
+
+		if($("#bxslider-pager li").length<5){
+			$("#bxslider-pager .bx-next").hide();
+		}
+
+// sincronizza sliders realizzazioni
+	function linkRealSliders(bigS,thumbS){
+
+		$("ul#bxslider-pager").on("click","a",function(event){
+			event.preventDefault();
+			var newIndex=$(this).parent().attr("data-slideIndex");
+			bigS.goToSlide(newIndex);
+		});
+	}
+
+	//slider!=$thumbSlider. slider is the realslider
+	function changeRealThumb(slider,newIndex){
+
+	var $thumbS=$("#bxslider-pager");
+	$thumbS.find('.active').removeClass("active");
+	$thumbS.find('li[data-slideIndex="'+newIndex+'"]').addClass("active");
+
+	if(slider.getSlideCount()-newIndex>=4)slider.goToSlide(newIndex);
+	else slider.goToSlide(slider.getSlideCount()-4);
+
+	}
+	});
+</script>
+
