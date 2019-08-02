@@ -21,8 +21,9 @@
 			position: relative;
 		}
 		.custom-pager img{
-			width: 100px;
-			height: 100px;
+			width: 50px;
+			height: 50px;
+			margin: 0 25px;
 		}
 		.custom-pager .active img{
 			border: 1px solid red;
@@ -79,7 +80,7 @@
 				var activePagerLeftPosition = activePager.position().left;
 				var currScroll = $pagerSelector.scrollLeft();
 				var pagerWidth = $pagerSelector.width();
-				var activeOuterWidth = activePager.outerWidth();
+				var activeOuterWidth = activePager.outerWidth(true);
 				var newLeft = activePagerLeftPosition + currScroll - pagerWidth + activeOuterWidth;
 				$pagerSelector.animate({ scrollLeft: newLeft}, 200);
 				console.log('=======================');
