@@ -4,43 +4,32 @@
     <title>Test</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        div.demo {
+            background: #ccc none repeat scroll 0 0;
+            border: 3px solid #666;
+            margin: 5px;
+            padding: 5px;
+            position: relative;
+            width: 200px;
+            height: 100px;
+            overflow: auto;
+        }
+        p {
+            margin: 10px;
+            padding: 5px;
+            border: 2px solid #666;
+            width: 1000px;
+            height: 1000px;
+        }
+    </style>
 </head>
 <body class="body">
-<button class="my-btn">Click</button>
+    <div class="demo"><h1>lalala</h1><p>Hello</p></div>
+
 <script>
 
-//    var debounce = function (func, wait, immediate) {
-//        var timeout;
-//        return function() {
-//            var context = this, args = arguments;
-//            var later = function() {
-//                timeout = null;
-//                if (!immediate) func.apply(context, args);
-//            };
-//            var callNow = immediate && !timeout;
-//            clearTimeout(timeout);
-//            timeout = setTimeout(later, wait);
-//            if (callNow) func.apply(context, args);
-//        };
-//    };
-
-    $(".my-btn").click($.debounce(1000, function(e) {
-        console.log("It works!");
-    }));
-
-$(".my-btn").click($.debounce(1000, function(e) {
-        console.log("It works!");
-    }));
-
-    function callFunction() {
-        console.log('hello');
-
-        debounce(function(){
-            console.log('world');
-        },500);
-    }
-    callFunction();
-    callFunction();
+    $( "div.demo" ).scrollLeft( 100 );
 </script>
 </body>
 </html>
