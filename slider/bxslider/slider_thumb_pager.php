@@ -65,29 +65,27 @@
 
 		var pagerSelector = '.custom-pager';
 		var $pagerSelector = $(pagerSelector);
-		var customPagerCounterSelector = $('.custom-pager-counter'); 
-
 		var slider = $(".home_slider").bxSlider({
 			pagerCustom: pagerSelector,
 			onSliderLoad: function (currentIndex) {
 				setTimeout(function () {
-					sliderCounter();
+					sliderCounter(slider);
 				}, 200);
 			},
-			onSlideAfter: function (currentElement, oldIndex, newIndex) {
+			onSlideAfter: function ($sliderElement, oldIndex, newIndex) {
 				sliderCounter(slider);
 				var activePager = $pagerSelector.find("a.active");
 				var activePagerLeftPosition = activePager.position().left;
 				var currScroll = $pagerSelector.scrollLeft();
 				var pagerWidth = $pagerSelector.width();
-				var activeOuterWidth = activePager.outerWidth(true);
+				var activeOuterWidth = activePager.outerWidth(true) * 3;
 				var newLeft = activePagerLeftPosition + currScroll - pagerWidth + activeOuterWidth;
 				$pagerSelector.animate({ scrollLeft: newLeft}, 200);
-				console.log('=======================');
 			}
 		});
 
-		function sliderCounter() {
+		function sliderCounter(slider) {
+			var customPagerCounterSelector = $('.custom-pager-counter');
 			var totalSlides = slider.getSlideCount();
 			var currentSlideNumber = slider.getCurrentSlide() + 1;
 			customPagerCounterSelector.find('.current-counter').text(currentSlideNumber);
