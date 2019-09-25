@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Test</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>scrollTop demo</title>
     <style>
         div.demo {
             background: #ccc none repeat scroll 0 0;
@@ -23,13 +22,15 @@
             height: 1000px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<body class="body">
-    <div class="demo"><h1>lalala</h1><p>Hello</p></div>
+<body>
+
+<div class="demo"><h1>lalala</h1><p>Hello</p></div>
 
 <script>
-
-    $( "div.demo" ).scrollLeft( 100 );
+    $( "div.demo" ).scrollTop( 500 );
 </script>
+
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>  </title>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <link href="rateit.css" rel="stylesheet" type="text/css">
+    <script src="jquery.rateit.js"></script>
+
+</head>
+<body>
+
+<div id="rateit-demo"></div>
+
+<!--<input type="range" min="0" max="5" value="0" step="0.5" id="backing1">-->
+<!--<div class="rateit" data-rateit-backingfld="#backing1"></div>-->
+
+    <!--&lt;!&ndash; OR &ndash;&gt;-->
+<!--<select id="backing2">-->
+    <!--<option value="1">Bad</option>-->
+    <!--<option value="2">OK</option>-->
+    <!--<option value="3">Great</option>-->
+    <!--<option value="4">Excellent</option>-->
+<!--</select>-->
+<!--<div class="rateit" data-rateit-backingfld="#backing2" data-rateit-min="0"></div>-->
+
+</body>
+</html>
+<script>
+    $('#rateit-demo').rateit({
+
+        // min value
+        min: 0,
+
+        // max value
+        max: 5,
+
+        // step size
+        step: 0.5,
+
+        // 'bg', 'font'
+        mode: 'bg',
+
+        // custom icon
+        icon: '★',
+
+        // size of star
+        starwidth: 16,
+        starheight: 16,
+
+        // is readonly?
+        readonly: false,
+
+        // is resetable?
+        resetable: true,
+
+        // is preset?
+        ispreset: false
+    });
+
+    $('#rateit-demo').rateit('value', 3);
+    $('#rateit-demo').bind('rated', function (event, value) {
+       console.log(value);
+    });
+
+    var ratting = $('#rateit-demo').rateit('value');
+    console.log(ratting);
+
+
+</script>
