@@ -26,5 +26,61 @@
         }
     });
 
+
+
 }(jQuery));
+
+
+jQuery(document).ready(function () {
+    $(document).ready(function () {
+        var $subPage = $(".arrow-box-b");
+
+        var sub_page_width = $(".arrow-box-b").outerWidth();
+        var current_page;
+
+        $(document).on('mouseenter', '.area-block', function (e) {
+            var _self = $(this);
+            var top = _self.offset().top;
+            var left = _self.offset().left;
+            var area_block_height = $('.area-block').outerHeight();
+            var area_block_width = $('.area-block').outerWidth();
+            $subPage.show();
+            $subPage.css({
+                left: left + (area_block_width / 2) - (sub_page_width / 2),
+                top: top + area_block_height
+            });
+
+            current_page = $(this).closest(".tree-leaf");
+
+        }).on('mouseleave', '.area-block',  function(e){
+
+            if($(e.relatedTarget).hasClass('arrow-box-b')){
+                $(document).on('mouseleave', '.arrow-box-b', function (e) {
+                    $(".arrow-box-b").hide();
+                });
+            }else{
+                $(".arrow-box-b").hide();
+            }
+        });
+
+        $subPage.on('click', function () {
+            console.log(current_page);
+            var subpage_Html = '<li class="tree-leaf">'+
+                '<div class="tree-node">'+
+                '<div class="blank-space"></div>'+
+                '<div class="area-block nochilds">'+
+                '<textarea maxlength="250">Page</textarea>'+
+                '</div>'+
+                '<div class="blank-space"></div>'+
+                '</div>'+
+                '<ul class="tree-children">'+
+                '<li class="tree-leaf"></li>'+
+                '</ul>'+
+                '</li>';
+
+            current_page.find(".tree-children").html(subpage_Html);
+        });
+    });
+
+});
 

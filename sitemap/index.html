@@ -19,8 +19,8 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+          <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
           <![endif]-->
 
     <!-- Favicon
@@ -31,14 +31,14 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="border: 1px solid black">
         <div class="tree-container">
             <ul class="tree-children">
                 <li class="tree-leaf root">
                     <div class="tree-node">
                         <div class="blank-space"></div>
                         <div class="area-block">
-                            <textarea maxlength="250">Project</textarea>
+                            <textarea maxlength="250" readonly>Project</textarea>
                         </div>
                         <div class="blank-space"></div>
                     </div>
@@ -47,19 +47,31 @@
                         <li class="tree-leaf">
                             <div class="tree-node">
                                 <div class="blank-space"></div>
-                                <div class="area-block nochilds sel">
+                                <!--                        <div class="area-block nochilds sel">-->
+                                <div class="area-block">
                                     <textarea maxlength="250">Page</textarea>
-                                    <div class="opt-ic">
-                                        <i class="fas fa-ic fa-minus-circle"></i>
-                                    </div>
-                                    <div class="cps-ic">
-                                        <i class="fas fa-ic fa-caret-up"></i>
-                                    </div>
+                                    <!--                                <div class="opt-ic">-->
+                                    <!--                                    <i class="fas fa-ic fa-minus-circle"></i>-->
+                                    <!--                                </div>-->
+                                    <!--                                <div class="cps-ic">-->
+                                    <!--                                    <i class="fas fa-ic fa-caret-up"></i>-->
+                                    <!--                                </div>-->
                                 </div>
                                 <div class="blank-space"></div>
                             </div>
                             <ul class="tree-children">
-                                <li class="tree-leaf"></li>
+                                <li class="tree-leaf">
+                                    <div class="tree-node">
+                                        <div class="blank-space"></div>
+                                        <div class="area-block nochilds">
+                                            <textarea maxlength="250">Page</textarea>
+                                        </div>
+                                        <div class="blank-space"></div>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-leaf"></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 
@@ -92,9 +104,9 @@
                 </li>
             </ul>
         </div>
-    </div>
 
-    <div class="action-box arrow-box-b">
+
+    <div class="action-box arrow-box-b"  style="position: absolute">
         <div class="arrow-box">
             <i class="fas fa-plus-circle"></i>
             <span>sub page</span>
@@ -106,6 +118,7 @@
             <i class="fas fa-plus-circle"></i>
             <span>sub page</span>
         </div>
+    </div>
     </div>
 
     <!-- Scripts
