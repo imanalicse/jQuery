@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        div{
+            display: inline-table;
+            background: #cccccc;
+            margin: 0 10px;
+            padding: 10px;
+            min-height: 200px;
+            min-width: 150px;
+        }
+        .heading{
+            font-weight:bold;
+        }
+    </style>
+    <script>
+        $( function() {
+            $( ".countriesCities li" ).draggable({
+                helper : 'clone',
+                revert: 'invalid'
+            });
+
+            $(".countriesDive").droppable({
+                accept: 'li[data-value="country"]',
+                drop: function (event, ui) {
+                    $(".countries").append(ui.draggable)
+                }
+            });
+
+            $(".citiesDiv").droppable({
+                accept: 'li[data-value="city"]',
+                drop: function (event, ui) {
+                    $(".cities").append(ui.draggable)
+                }
+            });
+
+        } );
+    </script>
+
+</head>
+<body>
+<div class="countryCityDiv">
+    <h4 class="heading">Counties and Cities</h4>
+    <ul class="countriesCities">
+        <li data-value="country">Australia</li>
+        <li data-value="country">Bangladesh</li>
+        <li data-value="country">India</li>
+        <li data-value="city">Dhaka</li>
+        <li data-value="city">Sydney</li>
+        <li data-value="city">Chennai</li>
+    </ul>
+</div>
+<div class="countriesDive">
+    <h4 class="heading"> Countries </h4>
+    <ul class="countries">
+    </ul>
+</div>
+<div class="citiesDiv">
+    <h4 class="heading"> Cities </h4>
+    <ul class="cities">
+    </ul>
+</div>
+
+</body>
+</html>
