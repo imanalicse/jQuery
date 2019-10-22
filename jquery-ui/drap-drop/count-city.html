@@ -20,16 +20,34 @@
         .heading{
             font-weight:bold;
         }
+        .highlight{
+            background-color: green;
+            color: white;
+            border: 3px solid black;
+
+        }
     </style>
     <script>
         $( function() {
             $( ".countriesCities li" ).draggable({
-                helper : 'clone',
-                revert: 'invalid'
+                //helper : 'clone',
+                cursor: "crosshair",
+                helper: function () {
+                  return '<b><u>'+$(this).text()+'</u></b>';
+                },
+                revert: 'invalid',
+                start: function(e, ui) {
+                    console.log(ui.helper.addClass("active"));
+                }
             });
 
             $(".countriesDive").droppable({
                 accept: 'li[data-value="country"]',
+                hoverClass: "highlight",
+                tolerance: "touch",
+                //activeClass: "ui-state-highlight",
+                //addClasses: false,
+                greedy: true,
                 drop: function (event, ui) {
                     $(".countries").append(ui.draggable)
                 }
@@ -37,6 +55,8 @@
 
             $(".citiesDiv").droppable({
                 accept: 'li[data-value="city"]',
+                hoverClass: "highlight",
+                tolerance: "touch",
                 drop: function (event, ui) {
                     $(".cities").append(ui.draggable)
                 }

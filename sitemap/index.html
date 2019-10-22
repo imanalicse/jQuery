@@ -28,6 +28,13 @@
     <link rel="icon" href="images/apple-touch-icon.png">
     <link rel="icon" href="images/favicon.ico">
 
+    <style>
+        .highlight{
+            background-color: #e4e5e9;
+            border: 1px solid green;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -37,8 +44,8 @@
                 <li class="tree-leaf root">
                     <div class="tree-node">
                         <div class="blank-space"></div>
-                        <div class="area-block">
-                            <textarea maxlength="250" readonly>Project</textarea>
+                        <div class="area-block page-root">
+                            <textarea maxlength="250"  class="disabled">Project</textarea>
                         </div>
                         <div class="blank-space"></div>
                     </div>
@@ -47,38 +54,48 @@
                         <li class="tree-leaf">
                             <div class="tree-node">
                                 <div class="blank-space"></div>
-                                <!--                        <div class="area-block nochilds sel">-->
-                                <div class="area-block">
-                                    <textarea maxlength="250">Page</textarea>
-                                    <!--                                <div class="opt-ic">-->
-                                    <!--                                    <i class="fas fa-ic fa-minus-circle"></i>-->
-                                    <!--                                </div>-->
-                                    <!--                                <div class="cps-ic">-->
-                                    <!--                                    <i class="fas fa-ic fa-caret-up"></i>-->
-                                    <!--                                </div>-->
-                                </div>
-                                <div class="blank-space"></div>
-                            </div>
-                            <ul class="tree-children">
-                                <li class="tree-leaf">
-                                    <div class="tree-node">
-                                        <div class="blank-space"></div>
-                                        <div class="area-block nochilds">
-                                            <textarea maxlength="250">Page</textarea>
-                                        </div>
-                                        <div class="blank-space"></div>
+                                <div class="area-block nochilds">
+                                    <textarea maxlength="250" class="disabled">Page</textarea>
+                                    <div class="opt-ic">
+                                        <i class="fas fa-ic fa-minus-circle"></i>
                                     </div>
-                                    <ul class="tree-children">
-                                    </ul>
-                                </li>
+                                    <div class="cps-ic">
+                                        <i class="fas fa-ic fa-caret-up"></i>
+                                    </div>
+                                </div>
+                                <div class="blank-space"></div>
+                            </div>
+                            <ul class="tree-children">
                             </ul>
                         </li>
-
                         <li class="tree-leaf">
                             <div class="tree-node">
                                 <div class="blank-space"></div>
                                 <div class="area-block nochilds">
-                                    <textarea maxlength="250">Page</textarea>
+                                    <textarea maxlength="250" class="disabled">Page</textarea>
+                                    <div class="opt-ic">
+                                        <i class="fas fa-ic fa-minus-circle"></i>
+                                    </div>
+                                    <div class="cps-ic">
+                                        <i class="fas fa-ic fa-caret-up"></i>
+                                    </div>
+                                </div>
+                                <div class="blank-space"></div>
+                            </div>
+                            <ul class="tree-children">
+                            </ul>
+                        </li>
+                        <li class="tree-leaf">
+                            <div class="tree-node">
+                                <div class="blank-space"></div>
+                                <div class="area-block nochilds">
+                                    <textarea maxlength="250" class="disabled">Page</textarea>
+                                    <div class="opt-ic">
+                                        <i class="fas fa-ic fa-minus-circle"></i>
+                                    </div>
+                                    <div class="cps-ic">
+                                        <i class="fas fa-ic fa-caret-up"></i>
+                                    </div>
                                 </div>
                                 <div class="blank-space"></div>
                             </div>
@@ -86,36 +103,27 @@
                             </ul>
                         </li>
 
-                        <li class="tree-leaf">
-                            <div class="tree-node">
-                                <div class="blank-space"></div>
-                                <div class="area-block nochilds">
-                                    <textarea maxlength="250">Page</textarea>
-                                </div>
-                                <div class="blank-space"></div>
-                            </div>
-                            <ul class="tree-children">
-                            </ul>
-                        </li>
                     </ul>
                 </li>
             </ul>
         </div>
 
 
-    <div class="action-box arrow-box-b"  style="position: absolute">
-        <div class="arrow-box">
-            <i class="fas fa-plus-circle"></i>
-            <span>sub page</span>
+        <div class="action-box arrow-box-b">
+            <div class="arrow-box">
+                <i class="fas fa-plus-circle"></i>
+                <span>sub page</span>
+            </div>
         </div>
-    </div>
 
-    <div class="action-box arrow-box-r">
-        <div class="arrow-box">
-            <i class="fas fa-plus-circle"></i>
-            <span>sub page</span>
+        <div class="action-box arrow-box-r">
+            <div class="arrow-box arrow-box-r-inner">
+                <i class="fas fa-plus-circle"></i>
+                <span>same level page</span>
+            </div>
         </div>
-    </div>
+
+
     </div>
 
     <!-- Scripts
