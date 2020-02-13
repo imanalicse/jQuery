@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Accordion - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+
+        $(function () {
+
+            var dateFormat = "yy-mm-dd";
+
+            var startDateSelector = $("#startDate");
+            var endDateSelector = $("#endDate");
+            var startDateObject = {};
+            var startDateDefault = startDateSelector.val();
+            if(startDateDefault){
+                startDateObject.minDate = startDateDefault;
+            }
+            startDateObject.changeMonth = true;
+            startDateObject.changeYear = true;
+            startDateObject.dateFormat = dateFormat;
+            startDateObject.onSelect = function (selected) {
+                console.log(selected);
+                endDateSelector.datepicker("option","minDate", selected)
+            }
+            startDateSelector.datepicker(startDateObject);
+
+
+            var endDateObject = {};
+            var endDateDefault = endDateSelector.val();
+            if(endDateDefault){
+                endDateObject.minDate = endDateDefault;
+            }
+            endDateObject.changeMonth = true;
+            endDateObject.changeYear = true;
+            endDateObject.dateFormat = dateFormat;
+            endDateObject.onSelect = function (selected) {
+                console.log(selected);
+                startDateSelector.datepicker("option","maxDate", selected)
+            }
+            endDateSelector.datepicker(endDateObject);
+
+        });
+    </script>
+</head>
+<body>
+
+<p>Start date: <input type="text" id="startDate" autocomplete="off" value=""></p>
+<p>End date: <input type="text" id="endDate" autocomplete="off" value="2020-02-20"></p>
+
+
+</body>
+</html>

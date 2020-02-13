@@ -17,3 +17,11 @@ var docid = getUriParam('docid');
 var url_string = window.location.href;
 var url = new URL(url_string);
 var cart_identifier = url.searchParams.get("cart_identifier");
+
+
+
+function getQueryParam(url, param) {
+	var regex = new RegExp("[\\?&]" + param + "=([^&#]*)"),
+		results = regex.exec(url);
+	return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
