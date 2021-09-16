@@ -14,27 +14,57 @@
 <body>
 
 <script>
-    var html = '<td> ' +
-            '<div class="line-info"> ' +
-            '<input type="hidden" name="currency_id" class="no-rename common-tab-actions" value="1"> ' +
-            '<input type="hidden" name="lineItem.row1" class="row-index common-tab-actions" value="1"> ' +
-            '<textarea class="invoice-note common-tab-actions" name="lineItem.invoiceNote1" style="display:none;"></textarea> ' +
-            '<div class="action-group"> ' +
-            '<span class="remove-row"></span> ' +
-            '<span class="add-note popup-opener" name="lineItem.noteIcon1" popup="invoiceLineItemAddNote" popup-title="Edit Line Item Information" popup-url="invoice/invoiceNote" data-id="6" data-type="invoice" data-row-index="0" popup-class="fixed-button-line-popup"> ' +
-            '</span> ' +
-            '</div> ' +
-            '<div class="form-row"> <input type="text" name="lineItem.name1" value="" autocomplete="off" maxlength="70" class="alter-this-input-field common-tab-actions"> </div> ' +
-            '<div class="replace-input-after-review hidden"> ' +
-            '<span class="values-after-review hidden">(<span class="rate-quantity-old"></span>)</span> ' +
-            '<span class="replaced_view replaced_rate-quantity-new hidden"></span> ' +
-            '</div> ' +
-            '</div> ' +
-            '</td>';
+    // var html = '<td> ' +
+    //         '<div class="line-info"> ' +
+    //         '<input type="hidden" name="currency_id" class="no-rename common-tab-actions" value="1"> ' +
+    //         '<input type="hidden" name="lineItem.row1" class="row-index common-tab-actions" value="1"> ' +
+    //         '<textarea class="invoice-note common-tab-actions" name="lineItem.invoiceNote1" style="display:none;"></textarea> ' +
+    //         '<div class="action-group"> ' +
+    //         '<span class="remove-row"></span> ' +
+    //         '<span class="add-note popup-opener" name="lineItem.noteIcon1" popup="invoiceLineItemAddNote" popup-title="Edit Line Item Information" popup-url="invoice/invoiceNote" data-id="6" data-type="invoice" data-row-index="0" popup-class="fixed-button-line-popup"> ' +
+    //         '</span> ' +
+    //         '</div> ' +
+    //         '<div class="form-row"> <input type="text" name="lineItem.name1" value="" autocomplete="off" maxlength="70" class="alter-this-input-field common-tab-actions"> </div> ' +
+    //         '<div class="replace-input-after-review hidden"> ' +
+    //         '<span class="values-after-review hidden">(<span class="rate-quantity-old"></span>)</span> ' +
+    //         '<span class="replaced_view replaced_rate-quantity-new hidden"></span> ' +
+    //         '</div> ' +
+    //         '</div> ' +
+    //         '</td>';
+    //
+    //     $(html).find( "[name^='lineItem']" ).each(function (indx, item) {
+    //        console.log(item)
+    //     });
+    var data = {};
+    data.is_hard_copy = 0;
+    data.is_digital_tiff = 0;
+    data.is_digital_copy = 1;
 
-        $(html).find( "[name^='lineItem']" ).each(function (indx, item) {
-           console.log(item)
+     var copy_values = {};
+     //copy_values['is_hard_copy'] = 0;
+     copy_values['is_digital_copy'] = 1;
+     //copy_values['is_digital_tiff'] = 0;
+
+     console.log(data);
+
+    console.log(copy_values);
+
+    var length = Object.keys(copy_values).length;
+    var one_selected_key = '';
+    if (length == 1) {
+        $.each(copy_values, function (key, value) {
+            console.log(key + '=>' + value);
+            one_selected_key = key;
         });
+    }
+
+    console.log('one_selected_key ', one_selected_key);
+
+    if (one_selected_key == 'is_digital_copy') {
+
+    }
+    console.log(data[one_selected_key]);
+
 
 </script>
 

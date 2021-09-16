@@ -8,8 +8,10 @@
 	<script src="jquery.validate.js"></script>
 	<script>
 		$.validator.setDefaults({
-			submitHandler: function() {
-				alert("submitted!");
+			submitHandler: function(form) {
+				var $form = $(form);
+				var formData = $form.serializeArray();
+				console.log(formData);
 			}
 		});
 
