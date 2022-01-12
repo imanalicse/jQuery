@@ -89,6 +89,12 @@
 				topics[this.checked ? "removeClass" : "addClass"]("gray");
 				topicInputs.attr("disabled", !this.checked);
 			});
+
+			$("input[type='file']").change(function () {
+				let $file_input = $(this);
+				$file_input.parent().find("label.error").hide();
+  				$file_input.removeClass("error");
+			});
 		});
 	</script>
 	<style>
@@ -137,6 +143,10 @@
 			<p>
 				<label for="ccomment">Your comment (required)</label>
 				<textarea id="ccomment" name="comment" required></textarea>
+			</p>
+			<p>
+				<label for="image">Image</label>
+				<input type="file" id="image" name="comment" required>
 			</p>
 			<p>
 				<input class="submit" type="submit" value="Submit">
