@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery validation plug-in - main demo</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script>
+		$().ready(function() {
+			var validateObj = {
+				rules: {
+					name: {
+						required: true
+					}
+				}
+			}
+			var validationMsg = {};
+			var msgObj = {
+						min: 'Please enter a value greater than 0.',
+						max: 'Max limit 10000 exceeded'
+			};
+			 validationMsg.price1 = msgObj;
+			 validateObj.messages = validationMsg;
+
+			var validator = $("#commentForm").validate(validateObj);
+			validator.destroy();
+
+			var msgObj2 = {
+						min: 'Please enter a value greater than 0.',
+						max: 'Max limit 10000 exceeded'
+			};
+
+			validationMsg.price2 = msgObj2;
+			validateObj.messages = validationMsg;
+
+		   validator =  $("#commentForm").validate(validateObj);
+
+		});
+	</script>
+	<style>
+		#commentForm {
+			width: 500px;
+		}
+		#commentForm label {
+			width: 250px;
+		}
+		#commentForm label.error, #commentForm input.submit {
+			margin-left: 253px;
+		}
+		#signupForm {
+			width: 670px;
+		}
+		#signupForm label.error {
+			margin-left: 10px;
+			width: auto;
+			display: inline;
+		}
+		#newsletter_topics label.error {
+			display: none;
+			margin-left: 103px;
+		}
+	</style>
+</head>
+<body>
+<h1 id="banner"><a href="https://jqueryvalidation.org/">jQuery Validation Plugin</a> Demo</h1>
+<div id="main">
+	<p>Default submitHandler is set to display an alert into of submitting the form</p>
+	<form class="cmxform" id="commentForm" method="get" action="">
+		<fieldset>
+			<legend>Please provide your name, email address (won't be published) and a comment</legend>
+			<p>
+				<label for="cname">Name (required, at least 2 characters)</label>
+				<input id="cname" name="name" minlength="2" type="text">
+			</p>
+			<p>
+				<label for="price1">Price 1</label>
+				<input id="price1" name="price1" min="0" max="100">
+			</p>
+			<p>
+				<label for="price2">Price 2</label>
+				<input id="price2" name="price2" min="0" max="100">
+			</p>
+			<p>
+				<input class="submit" type="submit" value="Submit">
+			</p>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>
