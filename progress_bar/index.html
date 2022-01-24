@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Progress Bar</title>
+    <script src="../jquery_lib/jquery-2.2.4.js"></script>
+    <script src="progress_bar.js"></script>
+
+</head>
+<style>
+    .progress {
+        display: block;
+        text-align: center;
+        width: 0;
+        height: 3px;
+        background: red;
+        transition: width .3s;
+    }
+    .progress.hide {
+        opacity: 0;
+        transition: opacity 1.3s;
+    }
+</style>
+<body class="body">
+    <p>
+        Use Chrome Developer Tools to slow your connection to a simulated "Slow 3G"
+    </p>
+    <div class="progress"></div>
+</body>
+</html>
