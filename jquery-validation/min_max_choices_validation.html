@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Customization</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script>
+		$.validator.addMethod("min_max_choice_validation", function(value, element, params) {
+			var $field_group = $(element).closest('.field_group');
+			var min_number_of_choices = $field_group.attr("min_number_of_choices");
+			var max_number_of_choices = $field_group.attr("max_number_of_choices");
+        	var checked_length = $field_group.find('input[type="checkbox"]:checked').length;
+        	if (min_number_of_choices <= checked_length && checked_length <= max_number_of_choices) {
+				return true
+			}
+			$.validator.messages.min_max_choice_validation = `Please choose  at least ${min_number_of_choices} and at most ${max_number_of_choices} options`;
+			return false
+		}, $.validator.messages.min_max_choice_validation);
+		$.validator.addClassRules({
+			min_max_choice_validation: {
+				min_max_choice_validation : true
+			}
+		});
+
+		$(document).ready(function() {
+			$("#commonForm").validate({
+				errorPlacement: function(error, element) {
+					if (element.attr('type') == 'checkbox') {
+						if (element.closest(".field_group").length > 0) {
+							element.closest(".field_group").find("label.error").remove();
+							element.closest(".field_group").append(error);
+						}
+						else {
+							error.insertAfter(element);
+						}
+					}
+					else {
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function(form) {
+					var $form = $(form);
+					var formData = $form.serializeArray();
+					console.log(formData);
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+<div id="main">
+	<form id="commonForm" method="post" action="">
+		<div class="field_group" min_number_of_choices="2" max_number_of_choices="3">
+			<p>Choose your favorite foods</p>
+			<input type="checkbox" id="apple" name="apple" value="Apple" class="min_max_choice_validation">
+			<label for="apple"> Apple</label><br>
+			<input type="checkbox" id="banana" name="banana" value="Banana" class="min_max_choice_validation">
+			<label for="banana"> Banana</label><br>
+			<input type="checkbox" id="lichi" name="lichi" value="Lichi" class="min_max_choice_validation">
+			<label for="lichi"> Lichi</label><br>
+			<input type="checkbox" id="mango" name="mango" value="Mango" class="min_max_choice_validation">
+			<label for="mango"> Mango</label><br>
+		</div>
+		<p>
+			<input class="submit" type="submit" value="Submit">
+		</p>
+	</form>
+
+</div>
+</body>
+</html>
