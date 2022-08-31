@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="jquery.validate.js"></script>
+	<script src="additional-methods.js"></script>
 	<script>
 
 		$().ready(function() {
@@ -30,12 +31,20 @@
 			//$.validator.classRules()
 
 			$("form").validate({
-				// rules:{
-				// 	reader_ticket_no:{
-				// 		required: true,
-				// 		ticket: /[0-9]{1}\/[0-9]{6}$/,
-				// 	}
-				// },
+				rules:{
+					// reader_ticket_no:{
+					// 	required: true,
+					// 	ticket: /[0-9]{1}\/[0-9]{6}$/,
+					// }
+					six_number: {
+						pattern: /^[0-9]{6}$/
+					},
+				},
+				messages: {
+					six_number: {
+						pattern: 'Please enter 6 digit number'
+					},
+				},
 				submitHandler: function(form) {
 					var $form = $(form);
 					var formData = $form.serializeArray();
@@ -50,12 +59,17 @@
 	<form>
 
 		<div class="form-group">
-				<label for="reader_ticket_no">Reader's Ticket No*</label>
-				<input type="text" name="reader_ticket_no" value="" class="form-control ticket" id="reader_ticket_no" placeholder="">
-			</div>
-			<p>
-				<input class="submit btn btn-submit" type="submit" value="Submit">
-			</p>
+			<label for="reader_ticket_no">Reader's Ticket No*</label>
+			<input type="text" name="reader_ticket_no" value="" class="form-control ticket" id="reader_ticket_no" placeholder="">
+		</div>
+
+		<div class="form-group">
+			<label for="six_number">6 digit number</label>
+			<input type="text" name="six_number" value="" class="form-control" placeholder="" id="six_number">
+		</div>
+		<p>
+			<input class="submit btn btn-submit" type="submit" value="Submit">
+		</p>
 	</form>
 
 </div>
